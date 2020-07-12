@@ -1,0 +1,192 @@
++package ManajemenKaryawan;
+import java.util.Scanner;
+import ManajemenKaryawan.AkunAdministrator;
+import ManajemenKaryawan.AkunKaryawan;
+
+public class App {
+    static Registrasi dataRegistrasi;
+    static AkunKaryawan dataAkunKaryawan;
+    static AkunAdministrator dataAkunAdministator;
+
+    public static void main(String[] args)
+    {
+        Scanner InputValue = new Scanner(System.in); 
+        interfaceMenu();
+
+        System.out.print("Pilihan menu: "); String option = InputValue.nextLine();
+        navigateOptions(option); InputValue.close();
+    }
+
+    static void interfaceMenu()
+    {
+        System.out.println("==========================");
+        System.out.println("Employee Management System");
+        System.out.println("Final Project OOP 19IT2   ");
+        System.out.println("========================== \n");
+
+        System.out.println("--------------------------   ");
+        System.out.println("1 >> Sign In                 ");
+        System.out.println("2 >> Log In                  ");
+        System.out.println("3 >> Sign Out                ");
+        System.out.println("4 >> Feedback                ");
+        System.out.println("5 >> About                   ");
+        System.out.println("0 >> Exit                    ");
+        System.out.println("-------------------------- \n");
+    }
+
+    public static void navigateOptions(String option)
+    {
+        String[] optionsList = new String[10];
+        optionsList[0] = "sign in";     // daftar akun baru
+        optionsList[1] = "log in";      // masuk ke akun tertentu
+        optionsList[2] = "sign out";    // hapus sebuah akun
+        optionsList[3] = "feedback";    // beri saran dan aspirasi
+        optionsList[4] = "about";       // informasi program
+        optionsList[5] = "exit";        // keluar dari program
+
+        if (option.equals(optionsList[0]) || option.equals("1"))
+        {
+            SignIn();
+        }
+        else if (option.equals(optionsList[1]) || option.equals("2"))
+        {
+            LogIn();
+        }
+        else if (option.equals(optionsList[2]) || option.equals("3"))
+        {
+            SignOut();
+        }
+        else if (option.equals(optionsList[3]) || option.equals("4"))
+        {
+            Feedback();
+        }
+        else if (option.equals(optionsList[4]) || option.equals("5"))
+        {
+            aboutProgram();
+        }
+        else if (option.equals(optionsList[5]) || option.equals("0"))
+        {
+            Exit();
+        }
+    }
+
+    private static void SignIn()
+    {
+        Scanner InputValue = new Scanner(System.in);
+        String strEmployeeID, strPassword, strConfirmPassword;
+        System.out.println("====================");
+        System.out.println("1 >> Sign In \n");
+
+        while (true)
+        {
+            System.out.print("Employee ID      = "); strEmployeeID = InputValue.nextLine();
+            System.out.print("Password         = "); strPassword = InputValue.nextLine();
+            System.out.print("Confirm Password = "); strConfirmPassword = InputValue.nextLine(); System.out.println();
+
+            if (!strConfirmPassword.equals(strPassword))
+            {
+                System.out.println("Maaf, data Anda mengalami kesalahan.");
+                System.out.println("Silakan input data Anda kembali. \n");
+            }
+            else if (strConfirmPassword.equals(strPassword))
+            {
+                System.out.println("Data Anda telah terkirim.");
+                System.out.println("Silakan Log In akun Anda.");
+                break;
+            }
+        }
+
+        dataRegistrasi = new Registrasi(strEmployeeID.toCharArray(), strPassword.toCharArray());
+        Database.append(dataRegistrasi);
+
+        // setelah itu, data akan disend ke data karyawan atau data administrator
+
+        System.out.println("==================== \n"); 
+        InputValue.close();
+    }
+
+    private static void LogIn()
+    {
+        Scanner InputValue = new Scanner(System.in);
+        String strEmployeeID, strPassword;
+        System.out.println("====================");
+        System.out.println("2 >> Log In \n");
+
+        while (true)
+        {
+            System.out.print("Employee ID = "); strEmployeeID = InputValue.nextLine();
+            System.out.print("Password    = "); strPassword = InputValue.nextLine(); System.out.println();
+
+            if (!employeeID_isExist(strEmployeeID)) {
+                System.out.println("Incorrect employee ID.");
+            }
+            if (!password_isExist(strPassword)) {
+                System.out.println("Incorrect password.");
+            }
+            if (employeeID_isExist(strEmployeeID) && password_isExist(strPassword)) 
+            {
+                System.out.println("\n"); 
+                System.out.println("==================== \n");
+
+                dataAkunKaryawan.interfaceMenu(strEmployeeID);
+                InputValue.close(); break;
+            }
+        }
+    }
+
+    private static boolean employeeID_isExist(String strEmployeeID)
+    {
+        for (int urutanDaftar = 0; urutanDaftar < Database.accessDaftarRegistrasi().size(); urutanDaftar++)
+        {
+            if (Database.accessDaftarRegistrasi().get(urutanDaftar).getEmployeeID().equals(strEmployeeID.toCharArray())) {return true;}
+            else if (!Database.accessDaftarRegistrasi().getLast().getEmployeeID().equals(strEmployeeID.toCharArray())) {return false;}
+        }
+    }
+
+    private static boolean password_isExist(String strPassword)
+    {
+        for (int urutanDaftar = 0; urutanDaftar < Database.accessDaftarRegistrasi().size(); urutanDaftar++)
+        {
+            if (Database.accessDaftarRegistrasi().get(urutanDaftar).getPassword().equals(strPassword.toCharArray())) {return true;}
+            else if (!Database.accessDaftarRegistrasi().getLast().getPassword().equals(strPassword.toCharArray())) {return false;}
+        }
+    }
+
+    private static void SignOut()
+    {
+        System.out.println("====================");
+        System.out.println("3 >> Sign Out \n");
+
+        System.out.println("==================== \n");
+    }
+
+    private static void Feedback()
+    {
+        System.out.println("====================");
+        System.out.println("4 >> Feedback \n");
+
+        
+        System.out.println("==================== \n");
+    }
+
+    private static void aboutProgram()
+    {
+        // Keterangan program
+        // Isi nama kelompok dan NIM
+
+        System.out.println("====================");
+        System.out.println("5 >> About \n");
+
+        System.out.println("Kelompok 3");
+        System.out.println("==================== \n");
+    }
+
+    private static void Exit()
+    {
+        System.out.println("====================");
+        System.out.println("0 >> Exit \n");
+
+        System.out.print("Apakah Anda ingin keluar?");
+        System.out.println("==================== \n");
+    }
+}
