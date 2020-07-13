@@ -2,10 +2,10 @@ package ManajemenKaryawan;
 
 public class AkunKaryawan
 {
-    private Registrasi dataRegistrasi;
-    private PenghasilanKaryawan dataPenghasilanKaryawan;
-    private IdentitasKaryawan dataIdentitasKaryawan;
-    private JadwalKerjaKaryawan dataJadwalKerjaKaryawan;
+    private Registrasi dataRegistrasi;                      // Karyawan punya nomorID & password
+    private PenghasilanKaryawan dataPenghasilanKaryawan;    // Karyawan punya data penghasilan per bulan
+    private IdentitasKaryawan dataIdentitasKaryawan;        // Karyawan punya identitas masing - masing
+    private JadwalKerjaKaryawan dataJadwalKerjaKaryawan;    // Karyawan punya jadwal kerja yang sudah tersusun
 
     public AkunKaryawan(){}
     public AkunKaryawan(Registrasi dataRegistrasi, PenghasilanKaryawan dataPenghasilanKaryawan, IdentitasKaryawan dataIdentitasKaryawan, JadwalKerjaKaryawan dataJadwalKerjaKaryawan)
