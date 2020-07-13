@@ -25,38 +25,6 @@ public class Database
         daftarAdministrator.add(dataAdministrator);
     }
 
-    static void delete(Registrasi dataRegistrasi)
-    {
-        // hapus suatu elemen dari LinkedList daftarRegistrasi
-        for (int urutanDaftar = 0; urutanDaftar < daftarRegistrasi.size(); urutanDaftar++)
-        {
-            // Apabila employeeID yang ingin dihapus = sudah ada di daftarRegistrasi
-            if (daftarRegistrasi.get(urutanDaftar).getNomorID().equals(dataRegistrasi.getNomorID())) 
-            {
-                // hapus data tersebut dari LinkedList
-                daftarRegistrasi.remove(urutanDaftar); break;
-            }
-            // Bila employeeID yang ingin dihapus = tidak tertera di daftarRegistrasi
-            else if (daftarRegistrasi.getLast().getNomorID().equals(dataRegistrasi.getNomorID()))
-            {
-                // 
-                System.out.println("Maaf, data tidak tercantum (undefined).");
-                System.out.println("Mohon cek ulang penulisan data Anda. \n");
-            }
-        }
-    }
-
-    static void delete(AkunKaryawan dataKaryawan)
-    {
-        // hapus suatu elemen dari LinkedList daftarKaryawan
-    }
-
-    static void delete(AkunAdministrator dataAdministrator)
-    {
-        // hapus suatu elemen dari LinkedList daftarAdministrator
-        
-    }
-
     static LinkedList <Registrasi> accessDaftarRegistrasi() 
     {
         // panggil LinkedList daftarRegistrasi
@@ -78,11 +46,33 @@ public class Database
     static AkunKaryawan aksesKaryawan(char[] nomorID)
     {
         // cari dan himpun data Karyawan berdasarkan ID mereka
+        for (int urutanDaftar = 0; urutanDaftar < daftarAkunKaryawan.size(); urutanDaftar++)
+        {
+            if (daftarAkunKaryawan.get(urutanDaftar).getDataRegistrasi().getNomorID().equals(nomorID.toString())) {
+                return daftarAkunKaryawan.get(urutanDaftar);
+            }
+            else if (!daftarAkunKaryawan.getLast().getDataRegistrasi().getNomorID().equals(nomorID.toString())) {
+                System.out.println("Maaf, tidak ada karyawan dengan nomor ID tersebut.");
+                System.out.println("Silakan cek nomor ID secara jelas dan terperinci.");
+                return null;
+            }
+        }
     }
 
     static AkunAdministrator aksesAdmin(char[] nomorID)
     {
         // cari dan himpun data Administrator berdasarkan ID mereka
+        for (int urutanDaftar = 0; urutanDaftar < daftarAdministrator.size(); urutanDaftar++)
+        {
+            if (daftarAdministrator.get(urutanDaftar).getDataRegistrasi().getNomorID().equals(nomorID.toString())) {
+                return daftarAdministrator.get(urutanDaftar);
+            }
+            else if (!daftarAdministrator.getLast().getDataRegistrasi().getNomorID().equals(nomorID.toString())) {
+                System.out.println("Maaf, tidak ada admin dengan nomor ID tersebut.");
+                System.out.println("Silakan cek nomor ID secara jelas dan terperinci.");
+                return null;
+            }
+        }
     }
 
     static void printKaryawan()
@@ -121,5 +111,6 @@ public class Database
     static void resetDaftarAdmin()
     {
         // hapus SEMUA elemen LinkedList daftarAdministrator
+        daftarAdministrator.clear();
     }
 }

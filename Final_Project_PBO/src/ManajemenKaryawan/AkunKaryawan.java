@@ -1,6 +1,6 @@
 package ManajemenKaryawan;
 
-public class AkunKaryawan 
+public class AkunKaryawan
 {
     private Registrasi dataRegistrasi;
     private PenghasilanKaryawan dataPenghasilanKaryawan;

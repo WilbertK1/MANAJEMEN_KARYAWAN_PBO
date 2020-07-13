@@ -1,3 +1,4 @@
+package ManajemenKaryawan;
 import java.util.Scanner;
 
 public class App {
@@ -107,8 +108,7 @@ public class App {
             dataAkunAdministator = new AkunAdministrator();
         }
 
-        String[] arguments = {"1", "2", "3"};
-        InputValue.close(); main(arguments);
+        InputValue.close();
     }
 
     private static void LogIn()
