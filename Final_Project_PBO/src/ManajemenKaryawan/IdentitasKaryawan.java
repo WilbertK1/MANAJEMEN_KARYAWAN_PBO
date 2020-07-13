@@ -1,11 +1,11 @@
 package ManajemenKaryawan;
 
 public class IdentitasKaryawan {
-	
-	private String namaLengkap ;
+
+	private String namaLengkap;
 	private char[] nomorHP = new char[12];
-	private	String email ;
-	private int kendaraan ;
+	private	String email;
+	private int kendaraan;
 	
 	public IdentitasKaryawan() {}
 	public IdentitasKaryawan(String namaLengkap, char[] nomorHP, String email, int kendaraan) {

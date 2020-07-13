@@ -1,7 +1,4 @@
-+package ManajemenKaryawan;
 import java.util.Scanner;
-import ManajemenKaryawan.AkunAdministrator;
-import ManajemenKaryawan.AkunKaryawan;
 
 public class App {
     static Registrasi dataRegistrasi;
@@ -72,14 +69,15 @@ public class App {
 
     private static void SignIn()
     {
+        // Belum Selesai (by 03082190015)
         Scanner InputValue = new Scanner(System.in);
-        String strEmployeeID, strPassword, strConfirmPassword;
+        String strNomorID, strPassword, strConfirmPassword;
         System.out.println("====================");
         System.out.println("1 >> Sign In \n");
 
         while (true)
         {
-            System.out.print("Employee ID      = "); strEmployeeID = InputValue.nextLine();
+            System.out.print("Employee ID      = "); strNomorID = InputValue.nextLine();
             System.out.print("Password         = "); strPassword = InputValue.nextLine();
             System.out.print("Confirm Password = "); strConfirmPassword = InputValue.nextLine(); System.out.println();
 
@@ -92,68 +90,82 @@ public class App {
             {
                 System.out.println("Data Anda telah terkirim.");
                 System.out.println("Silakan Log In akun Anda.");
+                System.out.println("======================== \n");
                 break;
             }
         }
 
-        dataRegistrasi = new Registrasi(strEmployeeID.toCharArray(), strPassword.toCharArray());
+        dataRegistrasi = new Registrasi(strNomorID.toCharArray(), strPassword.toCharArray());
         Database.append(dataRegistrasi);
 
-        // setelah itu, data akan disend ke data karyawan atau data administrator
+        if (strNomorID.substring(0, 2).equals("01"))
+        {
+            dataAkunKaryawan = new AkunKaryawan();
+        }
+        else if (strNomorID.substring(0, 2).equals("02"))
+        {
+            dataAkunAdministator = new AkunAdministrator();
+        }
 
-        System.out.println("==================== \n"); 
-        InputValue.close();
+        String[] arguments = {"1", "2", "3"};
+        InputValue.close(); main(arguments);
     }
 
     private static void LogIn()
     {
+        // Belum Selesai (by 03082190015)
         Scanner InputValue = new Scanner(System.in);
-        String strEmployeeID, strPassword;
-        System.out.println("====================");
-        System.out.println("2 >> Log In \n");
+        String strNomorID, strPassword;
 
         while (true)
         {
-            System.out.print("Employee ID = "); strEmployeeID = InputValue.nextLine();
+            System.out.println("====================");
+            System.out.println("2 >> Log In \n");
+
+            System.out.print("Employee ID = "); strNomorID = InputValue.nextLine();
             System.out.print("Password    = "); strPassword = InputValue.nextLine(); System.out.println();
 
-            if (!employeeID_isExist(strEmployeeID)) {
+            if (!nomorID_isExist(strNomorID)) {
                 System.out.println("Incorrect employee ID.");
             }
             if (!password_isExist(strPassword)) {
                 System.out.println("Incorrect password.");
             }
-            if (employeeID_isExist(strEmployeeID) && password_isExist(strPassword)) 
-            {
-                System.out.println("\n"); 
-                System.out.println("==================== \n");
 
-                dataAkunKaryawan.interfaceMenu(strEmployeeID);
-                InputValue.close(); break;
+            if (nomorID_isExist(strNomorID) && password_isExist(strPassword)) 
+            { 
+                System.out.println("==================== \n"); 
+                break;
             }
+            System.out.println();
         }
+        
+        InputValue.close();
     }
 
-    private static boolean employeeID_isExist(String strEmployeeID)
+    private static boolean nomorID_isExist(String strNomorID)
     {
+        // Mengecek apakah nomorID yang diinput sudah ada di LinkedList atau tidak (by 03082190015)
         for (int urutanDaftar = 0; urutanDaftar < Database.accessDaftarRegistrasi().size(); urutanDaftar++)
         {
-            if (Database.accessDaftarRegistrasi().get(urutanDaftar).getEmployeeID().equals(strEmployeeID.toCharArray())) {return true;}
-            else if (!Database.accessDaftarRegistrasi().getLast().getEmployeeID().equals(strEmployeeID.toCharArray())) {return false;}
+            if (Database.accessDaftarRegistrasi().get(urutanDaftar).getNomorID().equals(strNomorID.toCharArray())) {return true;}
         }
+        return false;
     }
 
     private static boolean password_isExist(String strPassword)
     {
+        // Mengecek apakah password yang diinput sudah ada di LinkedList atau tidak (by 03082190015)
         for (int urutanDaftar = 0; urutanDaftar < Database.accessDaftarRegistrasi().size(); urutanDaftar++)
         {
             if (Database.accessDaftarRegistrasi().get(urutanDaftar).getPassword().equals(strPassword.toCharArray())) {return true;}
-            else if (!Database.accessDaftarRegistrasi().getLast().getPassword().equals(strPassword.toCharArray())) {return false;}
         }
+        return false;
     }
 
     private static void SignOut()
     {
+        // Belum Selesai (by 03082190015)
         System.out.println("====================");
         System.out.println("3 >> Sign Out \n");
 
@@ -162,6 +174,7 @@ public class App {
 
     private static void Feedback()
     {
+        // Belum Selesai (by 03082190015)
         System.out.println("====================");
         System.out.println("4 >> Feedback \n");
 
@@ -171,8 +184,7 @@ public class App {
 
     private static void aboutProgram()
     {
-        // Keterangan program
-        // Isi nama kelompok dan NIM
+        // Belum Selesai (by 03082190015)
 
         System.out.println("====================");
         System.out.println("5 >> About \n");
@@ -183,6 +195,7 @@ public class App {
 
     private static void Exit()
     {
+        // Belum Selesai (by 03082190015)
         System.out.println("====================");
         System.out.println("0 >> Exit \n");
 

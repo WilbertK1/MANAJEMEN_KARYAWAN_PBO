@@ -2,33 +2,29 @@ package ManajemenKaryawan;
 
 public class Registrasi {
 	
-    private char[] employeeID = new char[20];
+    private char[] nomorID = new char[20];
     private char[] password = new char[20];
 
-    Registrasi(){}
-    Registrasi(char[] employeeID, char[] password)
+    public Registrasi(){}
+    public Registrasi(char[] nomorID, char[] password)
     {
-        this.employeeID = employeeID;
+        this.nomorID = nomorID;
         this.password = password;
     }
 
-    void setEmployeeID(char[] employeeID)
-    {
-        this.employeeID = employeeID;
+    void setNomorID(char[] nomorID) {
+        this.nomorID = nomorID;
     }
 
-    void setPassword(char[] password)
-    {
+    void setPassword(char[] password) {
         this.password = password;
     }
 
-    char[] getEmployeeID()
-    {
-        return employeeID;
+    char[] getNomorID() {
+        return nomorID;
     }
 
-    char[] getPassword()
-    {
+    char[] getPassword() {
         return password;
     }
 }

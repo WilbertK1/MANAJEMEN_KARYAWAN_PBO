@@ -1,10 +1,6 @@
 package ManajemenKaryawan;
 import java.util.Date;
 
-/**
- * @author Hubert Daniel Rusli (03082190024)
- */
-
 public class JadwalKerjaKaryawan
 {
     private Date jamMulaiKerja;
