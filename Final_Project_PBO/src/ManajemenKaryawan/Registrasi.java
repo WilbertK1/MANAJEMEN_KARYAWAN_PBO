@@ -1,5 +1,11 @@
 package ManajemenKaryawan;
 
+/**
+ * Registrasi.java
+ * Isi = data rahasia, seperti nomor ID dan password
+ * Guna = untuk sign in, log in, dan sign out
+ */
+
 public class Registrasi {
 	
     private char[] nomorID = new char[20];
