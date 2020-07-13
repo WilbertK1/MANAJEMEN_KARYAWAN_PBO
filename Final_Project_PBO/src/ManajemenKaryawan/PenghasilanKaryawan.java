@@ -1,6 +1,11 @@
 package ManajemenKaryawan;
 import java.util.Date;
 
+/**
+ * Penghasilan Karyawan
+ * Guna = sebagai tempat pemrosesan gaji/ pendapatan karyawan
+ */
+
 public class PenghasilanKaryawan
 {
     private int totalPenghasilan;
