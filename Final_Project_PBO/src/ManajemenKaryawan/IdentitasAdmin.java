@@ -1,10 +1,7 @@
 package ManajemenKaryawan;
 
-/**
- * @author Harris Siaputra (03082190009)
- */
-
-public class IdentitasAdmin {
+public class IdentitasAdmin 
+{
     private String namaLengkap;
     private String nomorHP;
     private String e_mail;
