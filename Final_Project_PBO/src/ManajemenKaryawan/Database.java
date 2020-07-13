@@ -1,13 +1,18 @@
 package ManajemenKaryawan;
 import java.util.LinkedList;
 
+/**
+ * Database.java = tempat dimana semua data tersimpan secara terpusat
+ * Termasuk juga data karyawan, data admin, hingga data rahasia
+ */
+
 public class Database 
 {
     private static LinkedList <Registrasi> daftarRegistrasi = new LinkedList<Registrasi>();
     private static LinkedList <AkunKaryawan> daftarAkunKaryawan = new LinkedList<AkunKaryawan>();
     private static LinkedList <AkunAdministrator> daftarAdministrator = new LinkedList<AkunAdministrator>();
 
-    static void append(Registrasi dataRegistrasi) 
+    static void append(Registrasi dataRegistrasi)
     {
         // masukkan elemen ke LinkedList dataRegistrasi
         daftarRegistrasi.add(dataRegistrasi);
