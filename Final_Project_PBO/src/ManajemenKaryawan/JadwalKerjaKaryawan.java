@@ -1,6 +1,11 @@
 package ManajemenKaryawan;
 import java.util.Date;
 
+/**
+ * JadwalKerjaKaryawan.java
+ * Berisi waktu kerja (job time) yang disusun oleh karyawan
+ */
+
 public class JadwalKerjaKaryawan
 {
     private Date jamMulaiKerja;
