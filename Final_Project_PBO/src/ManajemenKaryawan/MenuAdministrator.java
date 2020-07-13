@@ -1,6 +1,11 @@
 package ManajemenKaryawan;
 import java.util.Scanner;
 
+/**
+ * MenuAdministrator.java
+ * Isi = user interface yang diamati oleh akun admin
+ */
+
 public class MenuAdministrator 
 {
     static AkunAdministrator dataAkunAdministrator;
@@ -155,7 +160,7 @@ public class MenuAdministrator
 
                     dataAkunAdministrator.getDataIdentitasAdmin().setEmail(inputEmailBaru);
                     perubahanIdentitas = true; break;
-                    
+
                 default:
                     System.out.println("Pilihan yang Anda input tidak tertera.");
                     System.out.println("Pilihan hanya dari 1 - 3");
