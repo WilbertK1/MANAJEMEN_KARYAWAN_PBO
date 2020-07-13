@@ -1,6 +1,14 @@
 package ManajemenKaryawan;
 import java.util.Scanner;
 
+/**
+ * @author
+ * Albert Cenderawan
+ * Harris Siaputra
+ * Hubert Daniel Rusli
+ * Wilbert Khosasi
+ */
+
 public class App {
     static Registrasi dataRegistrasi;
     static AkunKaryawan dataAkunKaryawan;
