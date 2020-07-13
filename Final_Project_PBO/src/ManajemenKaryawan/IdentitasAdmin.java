@@ -1,5 +1,10 @@
 package ManajemenKaryawan;
 
+/**
+ * IdentitasAdmin.java
+ * Berisi unsur - unsur yang mengidentifikasikan admin
+ */
+
 public class IdentitasAdmin 
 {
     private String namaLengkap;
