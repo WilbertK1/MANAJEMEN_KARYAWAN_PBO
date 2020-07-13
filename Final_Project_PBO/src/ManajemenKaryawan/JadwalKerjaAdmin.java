@@ -1,10 +1,6 @@
 package ManajemenKaryawan;
 import java.util.Date;
 
-/**
- * @author Albert Cenderawan (03082190015)
- */
-
 public class JadwalKerjaAdmin 
 {
     private Date jamMulaiKerja;
