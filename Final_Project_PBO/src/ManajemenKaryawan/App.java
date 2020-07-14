@@ -1,4 +1,13 @@
+package ManajemenKaryawan;
 import java.util.Scanner;
+
+/**
+ * @author
+ * Albert Cenderawan
+ * Harris Siaputra
+ * Hubert Daniel Rusli
+ * Wilbert Khosasi
+ */
 
 public class App {
     static Registrasi dataRegistrasi;
@@ -107,8 +116,7 @@ public class App {
             dataAkunAdministator = new AkunAdministrator();
         }
 
-        String[] arguments = {"1", "2", "3"};
-        InputValue.close(); main(arguments);
+        InputValue.close();
     }
 
     private static void LogIn()

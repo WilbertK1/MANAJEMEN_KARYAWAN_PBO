@@ -1,5 +1,10 @@
 package ManajemenKaryawan;
 
+/**
+ * IdentitasKaryawan.java
+ * Berisi unsur - unsur yang mengidentifikasikan karyawan
+ */
+
 public class IdentitasKaryawan {
 
 	private String namaLengkap;
@@ -7,7 +12,7 @@ public class IdentitasKaryawan {
 	private	String email;
 	private int kendaraan;
 	
-	public IdentitasKaryawan() {}
+	public IdentitasKaryawan(){}
 	public IdentitasKaryawan(String namaLengkap, char[] nomorHP, String email, int kendaraan) {
 	this.namaLengkap = namaLengkap;
 	this.nomorHP = nomorHP;

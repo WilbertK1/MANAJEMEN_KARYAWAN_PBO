@@ -1,6 +1,11 @@
 package ManajemenKaryawan;
 import java.util.Scanner;
 
+/**
+ * MenuKaryawan.java
+ * Isi = user interface yang diamati oleh akun karyawan
+ */
+
 public class MenuKaryawan 
 {
     static AkunKaryawan dataAkunKaryawan;
