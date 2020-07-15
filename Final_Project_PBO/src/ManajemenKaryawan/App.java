@@ -11,6 +11,14 @@ import ManajemenKaryawan.*;
  * Aplikasi utama untuk "Manajemen Karyawan"
  */
 
+/**
+ * @author
+ * Albert Cenderawan
+ * Harris Siaputra
+ * Hubert Daniel Rusli
+ * Wilbert Khosasi
+ */
+
 public class App {
     static Registrasi dataRegistrasi;
     static AkunKaryawan dataAkunKaryawan;
