@@ -1,5 +1,9 @@
 package ManajemenKaryawan;
 
+/**
+ * Identitas yang dimiliki admin, seperti nomorHP & e-mail
+ */
+
 public class IdentitasAdmin 
 {
     private String namaLengkap;

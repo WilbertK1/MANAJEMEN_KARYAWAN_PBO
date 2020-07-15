@@ -1,5 +1,9 @@
 package ManajemenKaryawan;
 
+/**
+ * Identitas yang dimiliki karyawan, seperti nomorHP & e-mail
+ */
+
 public class IdentitasKaryawan {
 
 	private String namaLengkap;
@@ -7,7 +11,7 @@ public class IdentitasKaryawan {
 	private	String email;
 	private int kendaraan;
 	
-	public IdentitasKaryawan() {}
+	public IdentitasKaryawan(){}
 	public IdentitasKaryawan(String namaLengkap, char[] nomorHP, String email, int kendaraan) {
 	this.namaLengkap = namaLengkap;
 	this.nomorHP = nomorHP;

@@ -1,5 +1,9 @@
 package ManajemenKaryawan;
 
+/**
+ * Data rahasia yang digunakan dalam proses "Sign In", "Log In", dan "Sign Out"
+ */
+
 public class Registrasi {
 	
     private char[] nomorID = new char[20];
