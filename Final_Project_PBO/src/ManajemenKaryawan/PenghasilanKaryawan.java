@@ -2,8 +2,7 @@ package ManajemenKaryawan;
 import java.util.Date;
 
 /**
- * Penghasilan Karyawan
- * Guna = sebagai tempat pemrosesan gaji/ pendapatan karyawan
+ * Lokasi proses perhitungan gaji/ penghasilan karyawan
  */
 
 public class PenghasilanKaryawan
@@ -17,35 +16,30 @@ public class PenghasilanKaryawan
 
     int penghasilanPerJam(String statusKerja)
     {
-        int upahMinimum; // standar gaji per bulan (tergantung status kerjanya)
         int upahPerJam;  // jumlah upah/ gaji yang dihitung per jamnya
 
         if (statusKerja.equals("full time"))
         {
             // FULL TIME
-            upahMinimum = 5000000;
-            upahPerJam = upahMinimum / 173;
+            upahPerJam = 5000000 / 173;
             return upahPerJam;
         }
         else if (statusKerja.equals("part time"))
         {
             // PART TIME
-            upahMinimum = 2000000;
-            upahPerJam = upahMinimum / 173;
+            upahPerJam = 2000000 / 173;
             return upahPerJam;
         }
         else if (statusKerja.equals("internship"))
         {
             // INTERNSHIP
-            upahMinimum = 3000000;
-            upahPerJam = upahMinimum / 173;
+            upahPerJam = 3000000 / 173;
             return upahPerJam;
         }
         else if (statusKerja.equals("freelance"))
         {
             // FREELANCE
-            upahMinimum = 4000000;
-            upahPerJam = upahMinimum / 173;
+            upahPerJam = 4000000 / 173;
             return upahPerJam;
         }
         else {return 0;}

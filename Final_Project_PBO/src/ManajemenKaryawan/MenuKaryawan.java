@@ -1,5 +1,6 @@
 package ManajemenKaryawan;
 import java.util.Scanner;
+import ManajemenKaryawan.AkunKaryawan;
 
 /**
  * MenuKaryawan.java
@@ -8,16 +9,14 @@ import java.util.Scanner;
 
 public class MenuKaryawan 
 {
+    /**
+     * cuma gabungkan fini ini ke file AkunKaryawan 
+     */
     static AkunKaryawan dataAkunKaryawan;
+    static Scanner InputValue = new Scanner(System.in);
 
-    static void interfaceMenu(String strEmployeeID)
+    static void interfaceMenu()
     {
-        Scanner InputValue = new Scanner(System.in);
-        InputValue.close();
-        System.out.println("================================================");
-        System.out.println("Welcome, " + strEmployeeID + "!");
-        System.out.println("================================================");
-
         System.out.println("------------------------------  ");
         System.out.println("1 >> Input Identitas            ");
         System.out.println("2 >> Input Jam Kerja            ");
@@ -88,41 +87,46 @@ public class MenuKaryawan
 
     static void inputIdentitas()
     {
-        
+        return dataIdentitasKaryawan;
     }
 
     static void inputJamKerja()
     {
-
+        return dataJadwalKerjaKaryawan;
     }
 
     static void hitungGaji()
     {
-
+        return dataPenghasilanKaryawan;
     }
 
     static void ubahIdentitas()
     {
-
+        return dataRegistrasi;
     }
 
     static void ubahJamKerja()
     {
-
+        return dataJadwalKerjaKaryawan;
     }
 
     static void tampilkanIdentitas()
     {
-
+        AkunKaryawan.dataIdentitasKaryawan();
     }
 
     static void tampilkanJamKerja()
     {
-
+        AkunKaryawan.dataJadwalKerjaKaryawan;
     }
 
     static void LogOut()
     {
         App.main(null);
     }
+
+    /**
+     * @author Albert Cenderawan (03082190015)
+     * Pull git on 11/07/2020 - 12.13
+     */
 }

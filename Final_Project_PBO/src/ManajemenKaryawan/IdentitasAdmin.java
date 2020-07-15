@@ -1,8 +1,7 @@
 package ManajemenKaryawan;
 
 /**
- * IdentitasAdmin.java
- * Berisi unsur - unsur yang mengidentifikasikan admin
+ * Identitas yang dimiliki admin, seperti nomorHP & e-mail
  */
 
 public class IdentitasAdmin 

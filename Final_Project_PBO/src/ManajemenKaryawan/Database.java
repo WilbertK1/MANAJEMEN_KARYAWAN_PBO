@@ -2,8 +2,7 @@ package ManajemenKaryawan;
 import java.util.LinkedList;
 
 /**
- * Database.java = tempat dimana semua data tersimpan secara terpusat
- * Termasuk juga data karyawan, data admin, hingga data rahasia
+ * Basis data untuk aplikasi "Manajemen Karyawan"
  */
 
 public class Database 
@@ -88,7 +87,7 @@ public class Database
             System.out.println("Karyawan " + (urutanDaftar + 1) + ": ");
             System.out.println("Status Kerja     = " + daftarAkunKaryawan.get(urutanDaftar).getDataJadwalKerjaKaryawan().getStatusKerja()); System.out.println();
 
-            System.out.println("NIM Karyawan     = " + daftarAkunKaryawan.get(urutanDaftar).getDataRegistrasi().getNomorID().toString());
+            System.out.println("Nomor ID         = " + String.copyValueOf(daftarAkunKaryawan.get(urutanDaftar).getDataRegistrasi().getNomorID()));
             System.out.println("Nama Lengkap     = " + daftarAkunKaryawan.get(urutanDaftar).getDataIdentitasKaryawan().getnamaLengkap());
             System.out.println("Nomor HP         = " + daftarAkunKaryawan.get(urutanDaftar).getDataIdentitasKaryawan().getNomorHP().toString());
             System.out.println("E-mail           = " + daftarAkunKaryawan.get(urutanDaftar).getDataIdentitasKaryawan().getemail());
@@ -99,6 +98,16 @@ public class Database
     static void printAdmin()
     {
         // tampilkan data Administrator masing - masing dalam bentuk tabel
+        for (int i = 0; i < daftarAdministrator.size(); i++)
+        {
+            System.out.println("Administrator " + (i + 1) + ": ");
+            System.out.println("Status Kerja    = " + daftarAdministrator.get(i).getDataJadwalKerjaAdmin().getStatusKerja()); System.out.println();
+
+            System.out.println("Nomor ID        = " + String.copyValueOf(daftarAdministrator.get(i).getDataRegistrasi().getNomorID());
+            System.out.println("Nama Lengkap    = " + daftarAdministrator.get(i).getDataIdentitasAdmin().getNamaLengkap());
+            System.out.println("Nomor HP        = " + daftarAdministrator.get(i).getDataIdentitasAdmin().getnomorhp());
+            System.out.println("E-mail          = " + daftarAdministrator.get(i).getDataIdentitasAdmin().getEmail()); System.out.println();
+        }
     }
 
     static void resetDaftarRegistrasi()

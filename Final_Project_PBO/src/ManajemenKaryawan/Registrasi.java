@@ -1,9 +1,7 @@
 package ManajemenKaryawan;
 
 /**
- * Registrasi.java
- * Isi = data rahasia, seperti nomor ID dan password
- * Guna = untuk sign in, log in, dan sign out
+ * Data rahasia yang digunakan dalam proses "Sign In", "Log In", dan "Sign Out"
  */
 
 public class Registrasi {

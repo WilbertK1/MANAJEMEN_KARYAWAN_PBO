@@ -1,10 +1,14 @@
 package ManajemenKaryawan;
 
+/**
+ * Data yang dimiliki oleh setiap admin
+ */
+
 public class AkunAdministrator
 {
-    private Registrasi dataRegistrasi;              // Admin punya nomor ID dan password
-    private IdentitasAdmin dataIdentitasAdmin;      // Admin punya identitas masing - masing
-    private JadwalKerjaAdmin dataJadwalKerjaAdmin;  // Admin punya jadwal kerja yang sudah tersusun
+    private Registrasi dataRegistrasi = new Registrasi();                       // Admin punya nomor ID dan password
+    private IdentitasAdmin dataIdentitasAdmin = new IdentitasAdmin();           // Admin punya identitas masing - masing
+    private JadwalKerjaAdmin dataJadwalKerjaAdmin = new JadwalKerjaAdmin();     // Admin punya jadwal kerja yang sudah tersusun
 
     public AkunAdministrator(){}
     public AkunAdministrator(Registrasi dataRegistrasi, IdentitasAdmin dataIdentitasAdmin, JadwalKerjaAdmin dataJadwalKerjaAdmin)

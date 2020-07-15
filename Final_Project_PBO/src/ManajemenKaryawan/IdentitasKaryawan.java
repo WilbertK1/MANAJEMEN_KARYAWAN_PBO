@@ -1,8 +1,7 @@
 package ManajemenKaryawan;
 
 /**
- * IdentitasKaryawan.java
- * Berisi unsur - unsur yang mengidentifikasikan karyawan
+ * Identitas yang dimiliki karyawan, seperti nomorHP & e-mail
  */
 
 public class IdentitasKaryawan {

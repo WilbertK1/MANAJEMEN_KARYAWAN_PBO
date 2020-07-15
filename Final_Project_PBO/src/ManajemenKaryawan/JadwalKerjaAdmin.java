@@ -2,8 +2,7 @@ package ManajemenKaryawan;
 import java.util.Date;
 
 /**
- * JadwalKerjaAdmin.java
- * Berisi waktu kerja (job time) yang disusun oleh admin
+ * Waktu kerja yang disusun admin
  */
 
 public class JadwalKerjaAdmin 

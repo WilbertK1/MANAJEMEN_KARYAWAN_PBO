@@ -1,11 +1,15 @@
 package ManajemenKaryawan;
 
+/**
+ * Data yang dimiliki oleh setiap karyawan
+ */
+
 public class AkunKaryawan
 {
-    private Registrasi dataRegistrasi;                      // Karyawan punya nomorID & password
-    private PenghasilanKaryawan dataPenghasilanKaryawan;    // Karyawan punya data penghasilan per bulan
-    private IdentitasKaryawan dataIdentitasKaryawan;        // Karyawan punya identitas masing - masing
-    private JadwalKerjaKaryawan dataJadwalKerjaKaryawan;    // Karyawan punya jadwal kerja yang sudah tersusun
+    private Registrasi dataRegistrasi = new Registrasi();                               // Karyawan punya nomorID & password
+    private PenghasilanKaryawan dataPenghasilanKaryawan = new PenghasilanKaryawan();    // Karyawan punya data penghasilan per bulan
+    private IdentitasKaryawan dataIdentitasKaryawan = new IdentitasKaryawan();          // Karyawan punya identitas masing - masing
+    private JadwalKerjaKaryawan dataJadwalKerjaKaryawan = new JadwalKerjaKaryawan();    // Karyawan punya jadwal kerja yang sudah tersusun
 
     public AkunKaryawan(){}
     public AkunKaryawan(Registrasi dataRegistrasi, PenghasilanKaryawan dataPenghasilanKaryawan, IdentitasKaryawan dataIdentitasKaryawan, JadwalKerjaKaryawan dataJadwalKerjaKaryawan)

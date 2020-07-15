@@ -1,5 +1,15 @@
 package ManajemenKaryawan;
+import java.util.Arrays;
 import java.util.Scanner;
+import ManajemenKaryawan.*;
+
+/**
+ * @author
+ * Albert Cenderawan, Harris Siaputra, Hubert Daniel Rusli, Wilbert Khosasi
+ * 
+ * @category
+ * Aplikasi utama untuk "Manajemen Karyawan"
+ */
 
 /**
  * @author
@@ -13,14 +23,15 @@ public class App {
     static Registrasi dataRegistrasi;
     static AkunKaryawan dataAkunKaryawan;
     static AkunAdministrator dataAkunAdministator;
+    static String[] argumentsList = {"1", "2", "3"};
+    static Scanner InputValue = new Scanner(System.in);
 
     public static void main(String[] args)
-    {
-        Scanner InputValue = new Scanner(System.in); 
+    { 
         interfaceMenu();
 
-        System.out.print("Pilihan menu: "); String option = InputValue.nextLine();
-        navigateOptions(option); InputValue.close();
+        System.out.print("Pilihan menu: "); String pilihan = InputValue.nextLine();
+        String option = pilihan.toString(); navigateOptions(option);
     }
 
     static void interfaceMenu()
@@ -79,8 +90,7 @@ public class App {
     private static void SignIn()
     {
         // Belum Selesai (by 03082190015)
-        Scanner InputValue = new Scanner(System.in);
-        String strNomorID, strPassword, strConfirmPassword;
+        String strNomorID = " ", strPassword = " ", strConfirmPassword = " ";
         System.out.println("====================");
         System.out.println("1 >> Sign In \n");
 
@@ -90,39 +100,42 @@ public class App {
             System.out.print("Password         = "); strPassword = InputValue.nextLine();
             System.out.print("Confirm Password = "); strConfirmPassword = InputValue.nextLine(); System.out.println();
 
-            if (!strConfirmPassword.equals(strPassword))
-            {
+            if (!strConfirmPassword.equals(strPassword)) {
                 System.out.println("Maaf, data Anda mengalami kesalahan.");
                 System.out.println("Silakan input data Anda kembali. \n");
+                
             }
-            else if (strConfirmPassword.equals(strPassword))
-            {
-                System.out.println("Data Anda telah terkirim.");
-                System.out.println("Silakan Log In akun Anda.");
-                System.out.println("======================== \n");
+            else if (strConfirmPassword.equals(strPassword)) {
+                dataRegistrasi = new Registrasi(strNomorID.toCharArray(), strPassword.toCharArray());
+                Database.append(dataRegistrasi);
                 break;
             }
         }
 
-        dataRegistrasi = new Registrasi(strNomorID.toCharArray(), strPassword.toCharArray());
-        Database.append(dataRegistrasi);
-
         if (strNomorID.substring(0, 2).equals("01"))
         {
             dataAkunKaryawan = new AkunKaryawan();
+            Database.append(dataAkunKaryawan);
+            
+            System.out.println("Status >> Employee (Karyawan)");
         }
         else if (strNomorID.substring(0, 2).equals("02"))
         {
             dataAkunAdministator = new AkunAdministrator();
+            Database.append(dataAkunAdministator);
+
+            System.out.println("Status >> Administrator (Admin)");
         }
 
-        InputValue.close();
+        System.out.println("Data Anda telah terkirim.");
+        System.out.println("Silakan Log In akun Anda.");
+        System.out.println("========================= \n");
+        main(argumentsList);
     }
 
     private static void LogIn()
     {
         // Belum Selesai (by 03082190015)
-        Scanner InputValue = new Scanner(System.in);
         String strNomorID, strPassword;
 
         while (true)
@@ -133,22 +146,20 @@ public class App {
             System.out.print("Employee ID = "); strNomorID = InputValue.nextLine();
             System.out.print("Password    = "); strPassword = InputValue.nextLine(); System.out.println();
 
-            if (!nomorID_isExist(strNomorID)) {
-                System.out.println("Incorrect employee ID.");
-            }
-            if (!password_isExist(strPassword)) {
-                System.out.println("Incorrect password.");
+            if (!nomorID_isExist(strNomorID) || !password_isExist(strPassword)) {
+                System.out.println("Incorrect employee ID or password.");
             }
 
             if (nomorID_isExist(strNomorID) && password_isExist(strPassword)) 
             { 
-                System.out.println("==================== \n"); 
+                System.out.println("==================== \n");
                 break;
             }
             System.out.println();
         }
-        
-        InputValue.close();
+
+        // arahkan user, apakah ia masuk ke MenuKaryawan.java OR MenuAdministrator.java
+        navigateAccount(strNomorID);
     }
 
     private static boolean nomorID_isExist(String strNomorID)
@@ -156,7 +167,12 @@ public class App {
         // Mengecek apakah nomorID yang diinput sudah ada di LinkedList atau tidak (by 03082190015)
         for (int urutanDaftar = 0; urutanDaftar < Database.accessDaftarRegistrasi().size(); urutanDaftar++)
         {
-            if (Database.accessDaftarRegistrasi().get(urutanDaftar).getNomorID().equals(strNomorID.toCharArray())) {return true;}
+            // nomorID_LinkedList = nomorID yang ada dalam LinkedList NomorID
+            // misalnya:    bila i = 0, maka nomorID_LinkedList = nomor ID urutan ke-0
+            char[] nomorID_LinkedList = Database.accessDaftarRegistrasi().get(urutanDaftar).getNomorID();
+
+            // Arrays.equals = membandingkan 2 char array
+            if (Arrays.equals(nomorID_LinkedList, strNomorID.toCharArray())) {return true;}
         }
         return false;
     }
@@ -166,9 +182,42 @@ public class App {
         // Mengecek apakah password yang diinput sudah ada di LinkedList atau tidak (by 03082190015)
         for (int urutanDaftar = 0; urutanDaftar < Database.accessDaftarRegistrasi().size(); urutanDaftar++)
         {
-            if (Database.accessDaftarRegistrasi().get(urutanDaftar).getPassword().equals(strPassword.toCharArray())) {return true;}
+            // password_LinkedList = password yang ada dalam LinkedList Password
+            // misalnya:    bila i = 0, maka password_LinkedList = password urutan ke-0
+            char[] password_LinkedList = Database.accessDaftarRegistrasi().get(urutanDaftar).getPassword();
+            
+            // Arrays.equals = membandingkan 2 char array
+            if (Arrays.equals(password_LinkedList, strPassword.toCharArray())) {return true;}
         }
         return false;
+    }
+
+    private static void navigateAccount(String strNomorID)
+    {
+        if (strNomorID.substring(0, 2).equals("01"))
+        {
+            for (int i = 0; i < Database.accessDaftarKaryawan().size(); i++) 
+            {
+                char[] nomorID_LinkedList = Database.accessDaftarRegistrasi().get(i).getNomorID();
+                
+                if (Arrays.equals(nomorID_LinkedList, strNomorID.toCharArray())) {
+                    MenuKaryawan.dataAkunKaryawan = Database.accessDaftarKaryawan().get(i);
+                    MenuKaryawan.interfaceMenu();
+                }
+            }
+        }
+        else if (strNomorID.substring(0, 2).equals("02")) 
+        {
+            for (int i = 0; i < Database.accessDaftarAdministrator().size(); i++)
+            {
+                char[] nomorID_LinkedList = Database.accessDaftarRegistrasi().get(i).getNomorID();
+                
+                if (Arrays.equals(nomorID_LinkedList, strNomorID.toCharArray())) {
+                    MenuAdministrator.dataAkunAdministrator = Database.accessDaftarAdministrator().get(i);
+                    MenuAdministrator.interfaceMenu();
+                }
+            }
+        }
     }
 
     private static void SignOut()
@@ -177,7 +226,9 @@ public class App {
         System.out.println("====================");
         System.out.println("3 >> Sign Out \n");
 
+        osSystem_Pause();
         System.out.println("==================== \n");
+        main(argumentsList);
     }
 
     private static void Feedback()
@@ -186,8 +237,9 @@ public class App {
         System.out.println("====================");
         System.out.println("4 >> Feedback \n");
 
-        
+        osSystem_Pause();
         System.out.println("==================== \n");
+        main(argumentsList);
     }
 
     private static void aboutProgram()
@@ -197,8 +249,9 @@ public class App {
         System.out.println("====================");
         System.out.println("5 >> About \n");
 
-        System.out.println("Kelompok 3");
+        osSystem_Pause();
         System.out.println("==================== \n");
+        main(argumentsList);
     }
 
     private static void Exit()
@@ -207,7 +260,32 @@ public class App {
         System.out.println("====================");
         System.out.println("0 >> Exit \n");
 
-        System.out.print("Apakah Anda ingin keluar?");
-        System.out.println("==================== \n");
+        System.out.println("------------------------------------------");
+        System.out.println("WARNING >> DANGER ZONE                    ");
+        System.out.println("Semua data akan terhapus bila Anda keluar.");
+        System.out.println("Tentukan konfirmasi Anda saat ini.        \n");
+        System.out.println("------------------------------------------");
+
+        System.out.print("Apakah Anda ingin keluar dari program ini? "); String konfirmasi = InputValue.nextLine();
+        System.out.println();
+
+        if (konfirmasi.equals("ya") || konfirmasi.equals("yes"))
+        {
+            Database.resetDaftarAdmin();
+            Database.resetDaftarKaryawan();
+            Database.resetDaftarRegistrasi();
+            System.out.println("====================================== \n");
+        }
+        else
+        {
+            osSystem_Pause(); System.out.println("====================================== \n");
+            main(argumentsList);
+        }
+    }
+
+    public static void osSystem_Pause()
+    {
+        System.out.print("Please select any key to continue... "); 
+        InputValue.nextLine(); System.out.println();
     }
 }
